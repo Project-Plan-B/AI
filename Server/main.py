@@ -20,12 +20,12 @@ def info_other():
         return {"error": "오류가 발생했습니다"}, 400
 
 
-# lidar 정보 (소켓 사용 예정)
-# @app.route('/info/lidar', methods=["GET", "POST"])
-# def info_lidar():
-#     if request.method == "POST":
-#         data = request.json.get()
-
+# ir 정보
+@app.route('/info/ir', methods=["GET", "POST"])
+def info_lidar():
+    if request.method == "POST":
+        data = request.get_data()
+        
 
 # 앱으로 온도, 습도, co2 농도 보내기
 @app.route('/send/other', methods=["get"])
