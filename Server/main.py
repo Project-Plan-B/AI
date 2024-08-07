@@ -1,5 +1,5 @@
 from flask import Flask
-from Server import confusion, other
+from Server.api import other, confusion
 
 app = Flask(__name__)
 
