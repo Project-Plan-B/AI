@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 
 bp = Blueprint('other', __name__, url_prefix='/other')
-temperature, humidity = 0, 0  # DB로 옮길 예정
+temperature, humidity = 0, 0
+
 
 # 온도, 습도, co2 농도
 @bp.route('/info', methods=["GET", "POST"])
