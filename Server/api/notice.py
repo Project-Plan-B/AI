@@ -23,8 +23,8 @@ def add_alert():
 @bp.route('/cancel/<int:post_id>', methods=["POST"])
 def delete_alert(post_id):
     if request.method == "POST":
-        db.session.query(Alert).filter(Alert.id == post_id).delete()
-        db.session.commit()
+        Alert.query.filter(Alert.id == post_id).delete()
+        Alert.commit()
         return {"success": "성공적으로 삭제되었습니다."}, 204
     return {"error": "요청이 잘못되었습니다."}, 405
 
@@ -32,7 +32,7 @@ def delete_alert(post_id):
 @bp.route('/show_all', methods=["GET"])
 def show_alert():
     if request.method == "GET":
-        results = db.session.query(Alert).order_by(Alert.id.desc()).all()
+        results = Alert.query.order_by(Alert.id.desc()).all()
         return [{"title": result.title, "writing": result.writing} for result in results], 200
     return {"error": "요청이 잘못되었습니다."}, 405
 
@@ -40,6 +40,6 @@ def show_alert():
 @bp.route('/show/<int:post_id>', methods=["GET"])
 def show_alert_id(post_id):
     if request.method == "GET":
-        result = db.session.query(Alert).filter(Alert.id == post_id).first()
+        result = Alert.query.filter(Alert.id == post_id).first()
         return {"content": result.content}, 200
     return {"error": "요청이 잘못되었습니다."}, 405
