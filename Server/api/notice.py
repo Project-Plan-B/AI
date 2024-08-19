@@ -33,7 +33,9 @@ def delete_alert(post_id):
 def show_alert():
     if request.method == "GET":
         results = Alert.query.order_by(Alert.id.desc()).all()
-        return [{"title": result.title, "writing": result.writing} for result in results], 200
+        return {"list": [
+            {"post_id": result.id, "title": result.title, "writing": result.writing} for result in results]
+        }, 200
     return {"error": "요청이 잘못되었습니다."}, 405
 
 
