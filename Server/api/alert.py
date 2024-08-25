@@ -1,12 +1,10 @@
 from flask import Blueprint, request
 from Server.database.model import Room
-from apscheduler.schedulers.background import BackgroundScheduler
 
 bp = Blueprint('alert', __name__)
 sche = BackgroundScheduler(daemon=True)
 
 
-@sche.scheduled_job('cron', minuite='*/2', id='1')
 @bp.route('/alert/<int:room_id>', methods=["GET", "POST"])
 def show_alert(room_id):
     if request.method == "POST":
