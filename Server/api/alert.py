@@ -2,7 +2,6 @@ from flask import Blueprint, request
 from Server.database.model import Room
 
 bp = Blueprint('alert', __name__)
-sche = BackgroundScheduler(daemon=True)
 
 
 @bp.route('/alert/<int:room_id>', methods=["GET", "POST"])
