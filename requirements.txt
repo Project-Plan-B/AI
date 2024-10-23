@@ -15,5 +15,6 @@ ultralytics>=8.2.34
 pandas>=1.1.4
 seaborn>=0.11.0
 setuptools>=70.0.0
-mediapipe
 flask
+flask_sqlalchemy
+mysql-connector-python
